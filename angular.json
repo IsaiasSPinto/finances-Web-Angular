@@ -20,16 +20,21 @@
             "outputPath": "dist/finances-web",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
+              {
+                "input": "src/themes/lara-dark-blue.css",
+                "bundleName": "darkTheme",
+                "inject": false
+              },
+              {
+                "input": "src/themes/lara-ligth-blue.css",
+                "bundleName": "ligthTheme",
+                "inject": false
+              },
               "src/styles.scss"
             ],
             "scripts": [],
@@ -84,23 +89,18 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "644fabf0-d5f1-4fe0-88d3-8dcc4fd5e051"
   }
 }

@@ -1,0 +1,48 @@
+<div class="grid">
+  <form
+    (ngSubmit)="onSubmit()"
+    class="col-12 md:col-8 lg:col-6 xl:col-4 m-auto"
+  >
+    <main class="flex flex-column justify-content-center align-items-center">
+      <h1 class="text-center">Welcome back!</h1>
+      <div class="col-12">
+        <label for="email">Email</label>
+        <span class="p-input-icon-left w-full mt-2">
+          <i class="pi pi-envelope"></i>
+          <input
+            type="text"
+            placeholder="Enter your email"
+            pInputText
+            id="email"
+            type="email"
+            [(ngModel)]="form.email"
+            name="email"
+            class="w-full"
+          />
+        </span>
+      </div>
+      <div class="col-12">
+        <label for="password">Password</label>
+        <span class="p-input-icon-left w-full mt-2">
+          <i class="pi pi-lock"></i>
+          <input
+            placeholder="Enter password"
+            pInputText
+            id="password"
+            type="password"
+            [(ngModel)]="form.password"
+            name="password"
+            class="w-full"
+          />
+        </span>
+      </div>
+      <div class="col-12 text-right">
+        <a href="" class="text-sm text-color">Forgot Password?</a>
+      </div>
+
+      <footer class="col-12">
+        <p-button type="button" label="Log In" styleClass="w-full"></p-button>
+      </footer>
+    </main>
+  </form>
+</div>
