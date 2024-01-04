@@ -19,7 +19,11 @@ export class ApiService {
     url: string,
     data: TRequest
   ): Observable<TResponse> {
-    return this.client.post<TResponse>(`${this.BaseUrl}/${url}`, data);
+    return this.client.post<TResponse>(`${this.BaseUrl}/${url}`, data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
   put<T>(url: string, data: T): Observable<T> {

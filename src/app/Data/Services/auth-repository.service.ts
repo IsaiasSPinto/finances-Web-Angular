@@ -10,7 +10,7 @@ export class AuthRepositoryService {
   constructor(private readonly api: ApiService) {}
 
   login(data: LoginRequest) {
-    return this.api.post<LoginRequest, LoginResponse>('auth/login', data);
+    return this.api.post<LoginRequest, LoginResponse>('Auth/login', data);
   }
 
   register(data: any) {
