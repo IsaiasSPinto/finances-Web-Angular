@@ -1,25 +1,32 @@
 import { Component } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { AuthService } from '../../../../Core/Services/auth.service';
+import { LoginRequest } from '../../../../Shared/Auth/Models/LoginRequest';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  imports: [FormsModule, ButtonModule, InputTextModule],
+  imports: [FormsModule, ButtonModule, InputTextModule, HttpClientModule],
 })
 export class LoginComponent {
-  form: any = {
-    email: null,
-    password: null,
+  form: LoginRequest = {
+    email: '',
+    password: '',
   };
 
-  constructor() {}
+  constructor(private readonly authService: AuthService) {}
 
   onSubmit(): void {
-    console.log('form submitted');
+    let response = this.authService.Login(this.form);
+
+    response.subscribe((data) => {
+      console.log(data);
+    });
   }
 }

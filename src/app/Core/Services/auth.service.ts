@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-interface LoginRequest {
-  email: string;
-  password: string;
-}
-
-interface LoginResponse {
-  name: string;
-  email: string;
-  token: string;
-}
+import { LoginRequest } from '../../Shared/Auth/Models/LoginRequest';
+import { LoginResponse } from '../../Shared/Auth/Models/LoginResponse';
+import { AuthRepositoryService } from '../../Data/Services/auth-repository.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  constructor(private readonly repository: AuthRepositoryService) {}
 
-  Login(request: LoginRequest): Observable<LoginResponse> {}
+  Login(request: LoginRequest): Observable<LoginResponse> {
+    const response = this.repository.login(request);
+
+    console.log(response);
+
+    return response;
+  }
 }

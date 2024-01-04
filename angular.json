@@ -26,12 +26,12 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               {
-                "input": "src/themes/lara-dark-blue.css",
+                "input": "src/styles/themes/lara-dark-blue.css",
                 "bundleName": "darkTheme",
                 "inject": false
               },
               {
-                "input": "src/themes/lara-ligth-blue.css",
+                "input": "src/styles/themes/lara-ligth-blue.css",
                 "bundleName": "ligthTheme",
                 "inject": false
               },
