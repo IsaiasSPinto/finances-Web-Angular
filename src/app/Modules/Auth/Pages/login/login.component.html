@@ -16,11 +16,15 @@
             pInputText
             id="email"
             type="email"
-            [(ngModel)]="form.email"
             name="email"
             class="w-full"
+            formControlName="email"
           />
         </span>
+        @if(loginForm.controls.email.invalid &&
+        loginForm.controls.email.touched) {
+        <span class="text-red-400 text-sm">Email is invalid</span>
+        }
       </div>
       <div class="col-12">
         <label for="password">Password</label>
@@ -31,11 +35,15 @@
             pInputText
             id="password"
             type="password"
-            [(ngModel)]="form.password"
             name="password"
             class="w-full"
+            formControlName="password"
           />
         </span>
+        @if(loginForm.controls.password.invalid &&
+        loginForm.controls.password.touched) {
+        <span class="text-red-400 text-sm">Password is required</span>
+        }
       </div>
       <div class="col-12 text-right">
         <a href="" class="text-sm text-color">Forgot Password?</a>

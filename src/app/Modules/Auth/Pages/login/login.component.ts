@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import {
   FormBuilder,
   FormControl,
+  ReactiveFormsModule,
   FormGroup,
   FormsModule,
+  NonNullableFormBuilder,
   Validators,
 } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
@@ -18,26 +20,28 @@ import { LoginRequest } from '../../../../Shared/Auth/Models/LoginRequest';
   standalone: true,
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  imports: [FormsModule, ButtonModule, InputTextModule, HttpClientModule],
+  imports: [
+    FormsModule,
+    ButtonModule,
+    InputTextModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
 })
-export class LoginComponent implements OnInit {
-  loginForm: FormGroup = new FormGroup({});
-
+export class LoginComponent {
   constructor(
     private readonly authService: AuthService,
-    private readonly formBuilder: FormBuilder
+    private readonly formBuilder: NonNullableFormBuilder
   ) {}
 
-  ngOnInit(): void {
-    this.loginForm = this.formBuilder.group<LoginRequest>({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: ['', [Validators.required]],
-    });
-  }
+  loginForm = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
+  });
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      this.authService.Login(this.loginForm);
+      this.authService.Login(this.loginForm.value);
     }
   }
 }

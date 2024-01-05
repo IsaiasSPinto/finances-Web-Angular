@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'app-content-layout',
+  selector: 'app-root',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterOutlet, SidebarModule, ButtonModule],
   templateUrl: './content-layout.component.html',
-  styleUrl: './content-layout.component.scss'
+  styleUrl: './content-layout.component.scss',
 })
-export class ContentLayoutComponent {
-
-}
+export class ContentLayoutComponent {}
