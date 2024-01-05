@@ -7,8 +7,10 @@
     </tr>
   </thead>
   <tbody>
+    @for(account of accounts$ | async ; track account.id ) {
     <tr>
-      <td>aa</td>
+      <td>{{ account.id }}</td>
     </tr>
+    }
   </tbody>
 </table>

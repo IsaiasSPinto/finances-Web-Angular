@@ -35,7 +35,7 @@
                 "bundleName": "ligthTheme",
                 "inject": false
               },
-              "src/styles.scss"
+              "src/styles/styles.scss"
             ],
             "scripts": []
           },
