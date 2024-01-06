@@ -23,7 +23,8 @@ export class AuthService {
     response.subscribe((data) => {
       if (data.token == null) return alert('Invalid credentials');
 
-      localStorage.setItem('token', data.token);
+      this.StoreToken(data.token);
+      this.StoreRefreshToken(data.refreshToken);
       this.router.navigateByUrl('/');
     });
 
@@ -39,5 +40,25 @@ export class AuthService {
 
   IsAuthenticated(): boolean {
     return localStorage.getItem('token') != null;
+  }
+
+  RefreshToken(request: any) {
+    return this.api.post('auth/refreshToken', request);
+  }
+
+  StoreRefreshToken(refreshToken: string) {
+    localStorage.setItem('refreshToken', refreshToken);
+  }
+
+  GetRefreshToken() {
+    return localStorage.getItem('refreshToken');
+  }
+
+  GetToken() {
+    return localStorage.getItem('token');
+  }
+
+  StoreToken(token: string) {
+    localStorage.setItem('token', token);
   }
 }
