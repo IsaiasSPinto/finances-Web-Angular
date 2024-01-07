@@ -2,10 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import {
-  FormBuilder,
-  FormControl,
   ReactiveFormsModule,
-  FormGroup,
   FormsModule,
   NonNullableFormBuilder,
   Validators,
@@ -13,7 +10,6 @@ import {
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { AuthService } from '../../../../Core/Services/auth.service';
-import { LoginRequest } from '../../../../Shared/Auth/Models/LoginRequest';
 
 @Component({
   selector: 'app-login',

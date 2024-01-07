@@ -1,16 +1,27 @@
-<p>home works!</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>teste</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for(account of accounts$ | async ; track account.id ) {
-    <tr>
-      <td>{{ account.id }}</td>
-    </tr>
-    }
-  </tbody>
-</table>
+<div class="col-12">
+  <p-table
+    [value]="(accounts$ | async) ?? []"
+    dataKey="code"
+    [(selection)]="selectedAccount"
+    tableStyleClass="p-datatable-striped"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th>Name</th>
+        <th>Budget</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-account>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="account"></p-tableCheckbox>
+        </td>
+        <td>{{ account.name }}</td>
+        <td>{{ account.budget }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
