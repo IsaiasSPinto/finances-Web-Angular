@@ -10,6 +10,7 @@ import {
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { AuthService } from '../../../../Core/Services/auth.service';
+import { ToastService } from '../../../../Core/Services/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,8 @@ import { AuthService } from '../../../../Core/Services/auth.service';
 export class LoginComponent {
   constructor(
     private readonly authService: AuthService,
-    private readonly formBuilder: NonNullableFormBuilder
+    private readonly formBuilder: NonNullableFormBuilder,
+    private readonly toastService: ToastService
   ) {}
 
   loginForm = this.formBuilder.group({
@@ -37,7 +39,15 @@ export class LoginComponent {
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      this.authService.Login(this.loginForm.value);
+      this.authService.Login(this.loginForm.value).subscribe({
+        next: () => {
+          this.toastService.send({
+            title: 'Login com sucesso',
+            message: 'Message',
+            type: 'success',
+          });
+        },
+      });
     }
   }
 }

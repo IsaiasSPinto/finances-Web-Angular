@@ -4,6 +4,7 @@ import { LoginRequest } from '../../Shared/Auth/Models/LoginRequest';
 import { LoginResponse } from '../../Shared/Auth/Models/LoginResponse';
 import { Router } from '@angular/router';
 import { ApiService } from '../../Data/api.service';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,6 @@ export class AuthService {
       if (data.token == null) return alert('Invalid credentials');
 
       this.StoreToken(data.token);
-      this.StoreRefreshToken(data.refreshToken);
       this.router.navigateByUrl('/');
     });
 

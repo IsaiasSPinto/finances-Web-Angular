@@ -1,6 +1,5 @@
 import {
   HttpErrorResponse,
-  HttpHandler,
   HttpHandlerFn,
   HttpInterceptorFn,
   HttpRequest,
@@ -8,7 +7,6 @@ import {
 import { inject } from '@angular/core';
 import { catchError, switchMap, throwError } from 'rxjs';
 import { AuthService } from '../Services/auth.service';
-import { LoginResponse } from '../../Shared/Auth/Models/LoginResponse';
 import { Router } from '@angular/router';
 
 export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
@@ -48,7 +46,6 @@ function handleUnauthorizedError(
   return authService.RefreshToken(body).pipe(
     switchMap((response: any) => {
       authService.StoreToken(response.token);
-      authService.StoreRefreshToken(response.refreshToken);
       req = req.clone({
         setHeaders: { Authorization: `Bearer ${response.token}` },
       });
@@ -57,8 +54,7 @@ function handleUnauthorizedError(
     }),
     catchError((error) => {
       return throwError(() => {
-        console.log('token expirou');
-        route.navigateByUrl('/auth/login');
+        route.navigateByUrl('/login');
       });
     })
   );
