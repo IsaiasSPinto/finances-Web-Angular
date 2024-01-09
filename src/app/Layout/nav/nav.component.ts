@@ -1,16 +1,29 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
+import { ButtonModule } from 'primeng/button';
+import { ThemeService } from '../../Core/Services/theme.service';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [MenubarModule],
+  imports: [MenubarModule, ButtonModule],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss',
 })
 export class NavComponent {
+  constructor(private readonly themeService: ThemeService) {}
+
+  toggleTheme(): void {
+    this.themeService.switchTheme();
+  }
   items: MenuItem[] = [
+    {
+      icon: 'pi pi-fw pi-dollar',
+      label: 'Finances',
+      routerLink: '',
+      iconClass: 'align-left',
+    },
     {
       label: 'Home',
       icon: 'pi pi-fw pi-home',

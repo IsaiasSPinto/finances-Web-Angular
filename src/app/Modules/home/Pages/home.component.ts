@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     this.toastService.send({
       message: 'asdfsadas',
       title: 'fasf',
-      type: 'success',
+      type: 'error',
     });
   }
 

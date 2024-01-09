@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 
 import {
   ReactiveFormsModule,
@@ -17,13 +16,7 @@ import { ToastService } from '../../../../Core/Services/toast.service';
   standalone: true,
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  imports: [
-    FormsModule,
-    ButtonModule,
-    InputTextModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-  ],
+  imports: [FormsModule, ButtonModule, InputTextModule, ReactiveFormsModule],
 })
 export class LoginComponent {
   constructor(

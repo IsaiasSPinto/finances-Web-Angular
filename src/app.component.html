@@ -1,5 +1,9 @@
-<div class="grid m-0 p-0 h-screen">
-  <app-alert></app-alert>
-  <app-nav></app-nav>
-  <router-outlet></router-outlet>
-</div>
+<p-splitter [panelSizes]="[25, 75]" styleClass="grid m-0 p-0 h-screen">
+  <ng-template pTemplate>
+    <app-sidebar></app-sidebar>
+  </ng-template>
+  <ng-template pTemplate>
+    <app-nav></app-nav>
+    <router-outlet></router-outlet>
+  </ng-template>
+</p-splitter>
